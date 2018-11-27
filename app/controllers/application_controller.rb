@@ -15,4 +15,6 @@ class ApplicationController < ActionController::API
     # redirect_to login_url unless session[:user_id]
     json_response(status: 401) unless current_user
   end
+
+  
 end

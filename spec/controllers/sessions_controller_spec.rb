@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'pry'
 
 RSpec.describe 'POST /users/sign_in', type: :request do
 
-  # let(:user) { FactoryBot.create(:user) }
+  let!(:user) { FactoryBot.create(:user) }
   let(:url) { '/users/sign_in' }
   let(:params) do
     {
@@ -17,10 +18,11 @@ RSpec.describe 'POST /users/sign_in', type: :request do
 
   context 'when params are correct' do
 
-    # before { post url, params: params }
+    before { post url, params: params }
 
     it 'returns 200' do
-      p FactoryBot.create(:user)
+      binding.pry
+      FactoryBot.create(:user)
       expect(response).to have_http_status(200)
     end
 
