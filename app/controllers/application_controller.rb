@@ -1,17 +1,9 @@
 # frozen_string_literal: true
 
-<<<<<<< HEAD
-class ApplicationController < ActionController::API
-  # protect_from_forgery with: :exception
-  include SessionsHelper
-  include Response
-  include ExceptionHandler
-=======
 class ApplicationController < ActionController::API
   before_action :authenticate_user!
   include Response
   include ExceptionHandler
->>>>>>> set up devise
 
   protect_from_forgery with: :exception
 
