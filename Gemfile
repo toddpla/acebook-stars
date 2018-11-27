@@ -8,7 +8,6 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'bcrypt'
 gem 'rails', '~> 5.1.1'
 gem 'bootstrap'
 gem 'jquery-rails'
@@ -69,3 +68,5 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem "coffee-rails", "~> 4.2"
+
+gem "devise", "~> 4.5"

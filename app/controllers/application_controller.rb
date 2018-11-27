@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-  include SessionsHelper
+  before_action :authenticate_user!
 
-  before_action :require_login
+  protect_from_forgery with: :exception
 
   def redirect_to_login
     redirect_to login_url
