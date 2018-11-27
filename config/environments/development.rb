@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
+
+  ENV['DEVISE_JWT_SECRET_KEY'] = '330084882875e90d4aeb101cd1eb7bc2cd6a60628824486baefea6d1820d42e55594595a10fce4f897e20e48da5c49618333e923dc3cd48952a5520e6e5209c5'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

@@ -2,25 +2,52 @@
 
 require 'rails_helper'
 
-RSpec.describe SessionsController, type: :request do
-  before :each do
-    FactoryBot.create(:user, email: "jeff@hotmail.com", password: "password1")
-  end
-  before { post "/login", params: { session: { email: 'jeff@hotmail.com', password: 'password1' } } }
+RSpec.describe 'POST /users/sign_in', type: :request do
 
-  describe 'POST /' do
-    it 'responds with 200' do
-      expect(json['email']).to eq("jeff@hotmail.com")
+  # let(:user) { FactoryBot.create(:user) }
+  let(:url) { '/users/sign_in' }
+  let(:params) do
+    {
+      user: {
+        email: user.email,
+        password: user.password
+      }
+    }
+  end
+
+  context 'when params are correct' do
+
+    # before { post url, params: params }
+
+    it 'returns 200' do
+      p FactoryBot.create(:user)
+      expect(response).to have_http_status(200)
+    end
+
+    it 'returns JTW toekn in authorization header' do
+      expect(response.headers['Authorization']).to be_present
+    end
+
+    it 'returns valid JWT token' do
+      decoded_token = decoded_jwt_token_from_response(response)
+      expect(decoded_token.first['sub']).to be_present
     end
   end
 
-  describe 'DELETE /' do
-    before { get "/logout" }
+  context 'when login params are incorrect' do
+    before { post url }
 
-    it 'responds with 200' do
-      expect(json["message"]).to eq("logged out")
+    it 'returns unauthorized status' do
+      expect(response.status).to eq 401
     end
-
   end
+end
 
+RSpec.describe 'DELETE /logout', type: :request do
+  let(:url) { 'users/sign_out' }
+
+  it 'returns 204, no content' do
+    delete url
+    expect(response).to have_http_status(204)
+  end
 end

@@ -70,3 +70,5 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem "coffee-rails", "~> 4.2"
 
 gem "devise", "~> 4.5"
+
+gem "devise-jwt", "~> 0.5.8"

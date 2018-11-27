@@ -2,22 +2,31 @@
 
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: {
-    sessions: 'users/sessions'
-  }
+  devise_for :users,
+              # path: '',
+              # path_names: {
+              #   sign_in: 'login',
+              #   sign_out: 'logout',
+              #   registration: 'signup'
+              #
+              # },
+              controllers: {
+                sessions: 'users/sessions',
+                registrations: 'users/registrations'
+              }
 
-  get 'users/new'
-  get 'users/registration_confirmation'
-  get 'users/show'
+  # get 'users/new'
+  # get 'users/registration_confirmation'
+  # get 'users/show'
 
   root to: 'application#redirect_to_login'
 
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  get '/logout', to: 'sessions#destroy'
+  # get '/login', to: 'sessions#new'
+  # post '/login', to: 'sessions#create'
+  # get '/logout', to: 'sessions#destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users
+  # resources :users
   resources :chats
   resources :posts do
     member do

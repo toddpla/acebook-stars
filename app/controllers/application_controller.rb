@@ -5,8 +5,6 @@ class ApplicationController < ActionController::API
   include Response
   include ExceptionHandler
 
-  protect_from_forgery with: :exception
-
   def redirect_to_login
     redirect_to login_url
   end
