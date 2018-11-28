@@ -15,7 +15,8 @@ module Acebook
   config.middleware.insert_before 0, Rack::Cors do
     allow do
       origins 'localhost:3000', '127.0.0.1:3000', '0.0.0.0:3000',
-              'localhost:3001', '127.0.0.1:3001', '0.0.0.0:3001'
+              'localhost:3001', '127.0.0.1:3001', '0.0.0.0:3001',
+              'https://acebook-stars-frontend.herokuapp.com/'
       resource '*', headers: :any, methods: [:get, :post, :options]
     end
   end
