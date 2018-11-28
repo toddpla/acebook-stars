@@ -123,6 +123,9 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.1.0)
+    json_matchers (0.10.0)
+      json_schema
+    json_schema (0.19.1)
     jwt (2.1.0)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -297,11 +300,13 @@ DEPENDENCIES
   faker (~> 1.9)
   jbuilder (~> 2.5)
   jquery-rails
+  json_matchers
   launchy (~> 2.4)
   listen (>= 3.0.5, < 3.2)
   pg
   pry (~> 0.12.2)
   puma (~> 3.7)
+  rack-test
   rails (~> 5.1.1)
   rspec-rails (~> 3.5)
   rubocop (~> 0.60.0)

@@ -2,24 +2,28 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   skip_before_action :authenticate_user!
+  # before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_account_update_params, only: [:update]
+
   respond_to :json
 
   def create
     build_resource(sign_up_params)
-    resource.save
-    json_response(resource)
+    if resource.save
+      json_response(resource)
+    else
+      json_response(nil, 400)
+    end
   end
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
   #   super
   # end
 
-  # POST /resource
+  # POST /Users
   # def create
-  #   super
+  # super
   # end
 
   # GET /resource/edit

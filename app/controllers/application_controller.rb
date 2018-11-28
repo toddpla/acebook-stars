@@ -16,5 +16,4 @@ class ApplicationController < ActionController::API
     json_response(status: 401) unless current_user
   end
 
-  
 end

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'spec_helper'
+require 'jwt'
 
 RSpec.describe PostsController, type: :request do
 
@@ -9,7 +11,9 @@ RSpec.describe PostsController, type: :request do
   describe 'POST /' do
     before(:each) do
       user = FactoryBot.create(:user)
-      stub_current_user(user)
+      token = JWT.encode({user: User.first.id}, ENV['AUTH_SECRETS'], "HS256")
+      header = "Authorisation", "Bearer #{token}"
+      # stub_current_user(user)
     end
     before { post "/posts", params: { post: { message: message } } }
     it 'responds with 200 and post details' do

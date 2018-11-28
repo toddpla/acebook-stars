@@ -1,0 +1,11 @@
+{
+  "id": "file:/user.json",
+  "type": "object",
+  "properties": {
+    "id": { "type": "integer" },
+    "name": {"type": "null"},
+    "email": { "type": "string" },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" }
+  }
+}

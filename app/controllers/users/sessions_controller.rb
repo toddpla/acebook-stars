@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  skip_before_action :authenticate_user!, only: [:destroy]
+  skip_before_action :authenticate_user!
   respond_to :json
 
   private
@@ -14,13 +14,14 @@ class Users::SessionsController < Devise::SessionsController
     head :no_content
   end
   # before_action :configure_sign_in_params, only: [:create]
-  #
+
+
   # GET /resource/sign_in
   # def new
   #   super
   # end
   #
-  # POST /resource/sign_in
+  # POST '/users/sign_in'
   # def create
   #   super
   # end

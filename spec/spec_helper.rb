@@ -1,15 +1,21 @@
 # frozen_string_literal: true
-require 'coveralls'
-Coveralls.wear!('rails')
+# require 'coveralls'
+# Coveralls.wear!('rails')
 require 'simplecov'
 require 'simplecov-console'
+require "json_matchers/rspec"
+# require "rack/test"
 require_relative './api_controller_helper'
+require 'rails_helper'
+require 'rspec-rails'
 
+JsonMatchers.schema_root = "spec/support/api/schemas"
 
+DatabaseCleaner.strategy = :truncation
 
 RSpec.configure do |config|
-  require 'web_helpers'
-  config.include ApiControllerHelper
+  config.include ApiHelper, type: :api
+  config.include Requests::JsonHelpers, type: :api
 
   # config.before(:suite) do
   #
