@@ -1,10 +1,26 @@
 # frozen_string_literal: true
 
+require 'pry'
+
 class Users::SessionsController < Devise::SessionsController
   skip_before_action :authenticate_user!
+  # before_action :configure_sign_up_params, only: [:create]
   respond_to :json
 
-  private
+  # def create
+  #   binding.pry
+  #   user = User.find_by(email: params[:email].downcase)
+  #   if user&.authenticate(params[:password])
+  #     log_in user
+  #     json_response(user)
+  #   else
+  #     json_response(@user, 401)
+  #     # flash.now[:danger] = 'Invalid email/password combination!'
+  #     # render 'new'
+  #   end
+  # end
+
+  protected
 
   def respond_with(resource, _opts = {})
     render json: resource
@@ -13,7 +29,6 @@ class Users::SessionsController < Devise::SessionsController
   def respond_to_on_destroy
     head :no_content
   end
-  # before_action :configure_sign_in_params, only: [:create]
 
 
   # GET /resource/sign_in
@@ -23,7 +38,7 @@ class Users::SessionsController < Devise::SessionsController
   #
   # POST '/users/sign_in'
   # def create
-  #   super
+  #   binding.pry
   # end
   #
   # DELETE /resource/sign_out

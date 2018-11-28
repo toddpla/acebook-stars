@@ -16,6 +16,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def sign_up_params
+    params.permit(:name, :email, :password, :password_confirmation)
+  end
+
+
+
   # GET /resource/sign_up
   # def new
   #   super
