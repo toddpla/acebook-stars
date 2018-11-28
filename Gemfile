@@ -72,3 +72,5 @@ gem "coffee-rails", "~> 4.2"
 gem "devise", "~> 4.5"
 
 gem "devise-jwt", "~> 0.5.8"
+
+gem "rack-cors", "~> 1.0"
