@@ -15,8 +15,8 @@ class PostsController < ApplicationController
   end
 
   def index
-    @chat = Chat.new
-    @chats = Chat.all
+    # @chat = Chat.new
+    # @chats = Chat.all
     @posts = Post.order('created_at DESC')
     json_response(@posts)
   end
