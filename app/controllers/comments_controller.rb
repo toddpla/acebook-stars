@@ -56,7 +56,7 @@ class CommentsController < ApplicationController
   private
 
   def post_comment_params
-    params.require(:comment).permit(:comment)
+    params.permit(:comment)
       .merge({post_id: params.require(:post_id), user_id: current_user.id})
   end
 
